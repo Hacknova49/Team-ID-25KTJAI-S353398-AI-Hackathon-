@@ -100,19 +100,20 @@ cd ..
 ### Running the Application
 
 1. **Start the Flask API** (Terminal 1)
-```bash
-python app.py
-```
-API will run on `http://127.0.0.1:5000`
+   ```bash
+   python app.py
+   ```
+   *The backend will be available at `http://127.0.0.1:5000`*
 
 2. **Start the Vite Dev Server** (Terminal 2)
-```bash
-cd client
-npm run dev
-```
-Dashboard will run on `http://localhost:5173`
+   ```bash
+   cd client
+   npm run dev
+   ```
+   *The dashboard will be available at `http://localhost:5173`*
 
-3. **Open your browser** and navigate to `http://localhost:5173`
+3. **Access the Dashboard**
+   Open your browser and navigate to `http://localhost:5173`. You can now select different engine IDs and simulate real-time sensor data and RUL predictions.
 
 ## 📁 Project Structure
 
@@ -187,16 +188,21 @@ Content-Type: application/json
 - sensor_17, sensor_20, sensor_21
 
 ### Model Architecture
-```python
-Sequential([
-    Masking(mask_value=0.0, input_shape=(50, 10)),
-    LSTM(100, return_sequences=True),
-    LSTM(50),
-    Dense(50, activation='relu'),
-    Dropout(0.2),
-    Dense(1)
-])
-```
+
+The model is built using a Keras `Sequential` API with the following layers:
+
+1.  **Masking Layer**: `Masking(mask_value=0.0, input_shape=(50, 10))`
+    *   Ignores the padded zero-values in sequences shorter than 50 cycles, ensuring they don't affect the learning process.
+2.  **Primary LSTM Layer**: `LSTM(100, return_sequences=True)`
+    *   100 hidden units. Captures complex temporal patterns. `return_sequences=True` allows the next LSTM layer to process the full sequence.
+3.  **Secondary LSTM Layer**: `LSTM(50)`
+    *   50 hidden units. Consolidates the temporal features into a single vector representation for the final cycles.
+4.  **Hidden Dense Layer**: `Dense(50, activation='relu')`
+    *   A fully connected layer with 50 units and ReLU activation to learn non-linear combinations of the extracted temporal features.
+5.  **Dropout Layer**: `Dropout(0.2)`
+    *   Randomly sets 20% of input units to 0 during training to prevent overfitting and improve generalization.
+6.  **Output Layer**: `Dense(1)`
+    *   A single unit that outputs the continuous value representing the Predicted Remaining Useful Life (RUL).
 
 ### Training Details
 - **Sequence Length**: 50 timesteps
