@@ -1,3 +1,6 @@
+<img width="1859" height="1038" alt="Screenshot 2026-01-18 115433" src="https://github.com/user-attachments/assets/d484d624-251d-4fda-9a2f-06df4aff1234" />
+<img width="1872" height="1059" alt="Screenshot 2026-01-18 115034" src="https://github.com/user-attachments/assets/e4f8993f-1b9e-4cc6-ba0b-fdf1c953b55d" />
+
 # Aircraft Engine Predictive Maintenance System
 
 A machine learning-based predictive maintenance system for aircraft engines using LSTM neural networks. This project predicts Remaining Useful Life (RUL) of turbofan engines based on sensor data from the NASA C-MAPSS dataset.
