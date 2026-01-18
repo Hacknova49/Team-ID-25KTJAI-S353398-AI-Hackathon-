@@ -48,7 +48,8 @@ const MetricsPanel = ({ rul, health, cycle }) => {
                 </div>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
                     <span className="metric-value" style={{
-                        background: 'linear-gradient(to bottom, #fff, var(--text-dim))',
+                        color: 'var(--text-main)',
+                        background: 'linear-gradient(to bottom, var(--text-main), var(--text-dim))',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent'
                     }}>{displayRul}</span>
@@ -104,14 +105,16 @@ const MetricsPanel = ({ rul, health, cycle }) => {
 
             {/* Current Cycle Card */}
             <div className="glass-card" style={{ padding: '1.5rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1.5rem', color: 'var(--text-dim)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '1.5rem', color: 'var(--text-main)' }}>
                     <div style={{ padding: '8px', background: 'rgba(168,85,247,0.1)', borderRadius: '8px', display: 'flex' }}>
                         <Zap size={20} color="var(--accent)" />
                     </div>
-                    <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.05em' }}>OPERATIONAL CYCLES</span>
+                    <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.05em', color: 'var(--text-dim)' }}>OPERATIONAL CYCLES</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: '10px' }}>
-                    <span className="metric-value">{displayCycle < 1000 ? String(displayCycle).padStart(3, '0') : displayCycle}</span>
+                    <span className="metric-value" style={{ color: 'var(--text-main)' }}>
+                        {displayCycle < 1000 ? String(displayCycle).padStart(3, '0') : displayCycle}
+                    </span>
                     <ShieldCheck size={20} color="var(--success)" style={{ filter: 'drop-shadow(0 0 5px var(--success))' }} />
                 </div>
                 <div style={{ marginTop: '1rem', fontSize: '0.875rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '6px' }}>

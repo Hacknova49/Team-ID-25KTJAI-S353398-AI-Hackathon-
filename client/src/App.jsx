@@ -19,10 +19,13 @@ function App() {
   const [rul, setRul] = useState(null);
   const [health, setHealth] = useState(null);
   const [statusMsg, setStatusMsg] = useState({ message: 'READY', type: 'ready' });
+  const [isDark, setIsDark] = useState(false);
 
   // History for Charts
   const [healthHistory, setHealthHistory] = useState([]);
   const [sensorHistory, setSensorHistory] = useState([]);
+
+  const toggleTheme = () => setIsDark(!isDark);
 
   const timerRef = useRef(null);
 
@@ -128,31 +131,35 @@ function App() {
   };
 
   return (
-    <div className="app-container">
-      <Sidebar
-        engines={engines}
-        selectedEngine={selectedEngine}
-        onSelectEngine={setSelectedEngine}
-        isRunning={isRunning}
-        onToggle={() => setIsRunning(!isRunning)}
-        onReset={resetSimulation}
-        speed={speed}
-        onSpeedChange={setSpeed}
-        status={statusMsg}
-      />
-
-      <main className="main-content">
-        <MetricsPanel
-          rul={rul}
-          health={health}
-          cycle={engineData[currentIndex]?.cycle || 0}
+    <div className={`app-wrapper ${isDark ? 'dark-theme' : ''}`}>
+      <div className="app-container">
+        <Sidebar
+          engines={engines}
+          selectedEngine={selectedEngine}
+          onSelectEngine={setSelectedEngine}
+          isRunning={isRunning}
+          onToggle={() => setIsRunning(!isRunning)}
+          onReset={resetSimulation}
+          speed={speed}
+          onSpeedChange={setSpeed}
+          status={statusMsg}
+          isDark={isDark}
+          toggleTheme={toggleTheme}
         />
 
-        <SensorCharts
-          healthHistory={healthHistory}
-          sensorHistory={sensorHistory}
-        />
-      </main>
+        <main className="main-content">
+          <MetricsPanel
+            rul={rul}
+            health={health}
+            cycle={engineData[currentIndex]?.cycle || 0}
+          />
+
+          <SensorCharts
+            healthHistory={healthHistory}
+            sensorHistory={sensorHistory}
+          />
+        </main>
+      </div>
     </div>
   );
 }

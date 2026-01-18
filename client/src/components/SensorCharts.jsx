@@ -46,7 +46,7 @@ const commonOptions = {
             labels: {
                 usePointStyle: true,
                 padding: 20,
-                color: '#64748b',
+                color: '#94a3b8',
                 font: { family: "'Outfit', sans-serif", size: 11, weight: 600 }
             }
         },
@@ -69,7 +69,7 @@ const commonOptions = {
             ticks: { color: '#94a3b8', font: { family: "'JetBrains Mono', monospace", size: 10 } }
         },
         y: {
-            grid: { color: 'rgba(0,0,0,0.05)' },
+            grid: { color: 'rgba(148, 163, 184, 0.1)' },
             ticks: { color: '#94a3b8', font: { family: "'JetBrains Mono', monospace", size: 10 } }
         }
     }
