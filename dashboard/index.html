@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jet Engine RUL Prediction | AI Dashboard</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar glass-panel">
+            <div class="brand">
+                <span class="material-icons-round">flight_takeoff</span>
+                <h1>AeroGuard<br><span class="subtitle">Predictive AI</span></h1>
+            </div>
+
+            <div class="controls">
+                <div class="control-group">
+                    <label>Select Engine</label>
+                    <select id="engineSelect" class="glass-input">
+                        <option value="" disabled selected>Loading...</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label>Simulation Speed</label>
+                    <input type="range" id="speedRange" min="100" max="1000" value="500" step="100">
+                    <div class="speed-label"><span id="speedValue">500</span>ms</div>
+                </div>
+
+                <button id="startBtn" class="btn-primary">
+                    <span class="material-icons-round">play_arrow</span> Start Simulation
+                </button>
+                <button id="resetBtn" class="btn-secondary">
+                    <span class="material-icons-round">refresh</span> Reset
+                </button>
+            </div>
+
+            <div class="status-panel">
+                <h3>System Status</h3>
+                <div id="statusIndicator" class="status-badge status-green">
+                    <span class="dot"></span>
+                    <span id="statusText">READY</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header Metrics -->
+            <div class="metrics-grid">
+                <!-- RUL Card -->
+                <div class="metric-card glass-panel">
+                    <div class="metric-header">
+                        <span class="material-icons-round">timer</span>
+                        <h2>RUL Prediction</h2>
+                    </div>
+                    <div class="metric-value">
+                        <span id="rulValue">--</span>
+                        <span class="measure">cycles</span>
+                    </div>
+                    <p class="metric-sub">Remaining Useful Life</p>
+                </div>
+
+                <!-- Health Score Gauge -->
+                <div class="metric-card glass-panel">
+                    <div class="metric-header">
+                        <span class="material-icons-round">health_and_safety</span>
+                        <h2>Engine Health</h2>
+                    </div>
+                    <div class="gauge-container">
+                        <canvas id="healthGauge"></canvas>
+                        <div class="gauge-value" id="healthValue">--%</div>
+                    </div>
+                </div>
+
+                <!-- Cycle Counter -->
+                <div class="metric-card glass-panel">
+                    <div class="metric-header">
+                        <span class="material-icons-round">refresh</span>
+                        <h2>Current Cycle</h2>
+                    </div>
+                    <div class="metric-value">
+                        <span id="cycleValue">0</span>
+                    </div>
+                    <p class="metric-sub">Operational Cycles</p>
+                </div>
+            </div>
+
+            <!-- Charts Area -->
+            <div class="charts-grid">
+                <div class="chart-card glass-panel full-width">
+                    <div class="chart-header">
+                        <h3>Health Degradation Over Time</h3>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="healthChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card glass-panel">
+                    <div class="chart-header">
+                        <h3>Vibration Sensors (2, 3, 4)</h3>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="sensorChart1"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card glass-panel">
+                    <div class="chart-header">
+                        <h3>Pressure Sensors (7, 12, 15)</h3>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="sensorChart2"></canvas>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
