@@ -1,5 +1,8 @@
-<img width="1859" height="1038" alt="Screenshot 2026-01-18 115433" src="https://github.com/user-attachments/assets/d484d624-251d-4fda-9a2f-06df4aff1234" />
-<img width="1872" height="1059" alt="Screenshot 2026-01-18 115034" src="https://github.com/user-attachments/assets/e4f8993f-1b9e-4cc6-ba0b-fdf1c953b55d" />
+<img width="1868" height="1047" alt="Screenshot 2026-01-18 121116" src="https://github.com/user-attachments/assets/cf375e7d-0537-4976-9a38-c7ba78332379" />
+<img width="1861" height="1041" alt="Screenshot 2026-01-18 121221" src="https://github.com/user-attachments/assets/910b81f0-549b-4213-9da5-5739a2e102a5" />
+<img width="1901" height="600" alt="Screenshot 2026-01-18 121201" src="https://github.com/user-attachments/assets/1d034162-d464-4e04-81ab-f5fe89847714" />
+
+
 
 # Aircraft Engine Predictive Maintenance System
 
